@@ -569,18 +569,28 @@ nav.scrolled .nav-hamburger span { background: var(--navy-mid); }
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
 
-  nav { padding: 0 16px; height: 60px; }
+  nav {
+    padding: 0 16px;
+    height: 60px;
+    background: rgba(255,255,255,0.40);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(13,27,42,0.08);
+    box-shadow: 0 2px 20px rgba(13,27,42,0.08);
+  }
 
   .nav-logo-wrap { padding-left: 0; align-items: center; position: relative; z-index: 100; }
 
-  .nav-logo { height: 100px !important; 
-              margin-top: -5px !important; 
-              margin-right: 15px !important; 
+  .nav-logo { height: 100px !important;
+              margin-top: -5px !important;
+              /* margin-right: 5px !important; */
+              margin-left: 5px !important;
             }
 
-  .nav-hamburger { display: flex; 
-                margin-right: 15px !important; 
+  .nav-hamburger { display: flex;
+                margin-right: 5px !important;
                 margin-top: 15px !important; }
+  .nav-hamburger span { background: var(--navy-mid); }
   .nav-spacer { display: none; }
 
   .nav-links-center {
