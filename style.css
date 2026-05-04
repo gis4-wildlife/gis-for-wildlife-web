@@ -92,14 +92,14 @@ nav.scrolled {
   padding-bottom: 4px;
   transition: color 0.3s;
 }
-  font-weight: 400;
+  /* font-weight: 400;
   letter-spacing: 0.03em;
   text-transform: none;
   color: rgba(255,255,255,0.92);
   position: relative;
   padding-bottom: 4px;
   transition: color 0.3s;
-}
+} */
 nav.scrolled .nav-links a {
   color: var(--navy-mid);
 }
@@ -469,7 +469,7 @@ footer a:hover { color: #fff; }
   flex-wrap: wrap;
   margin-top: 48px;
 }
-.stat-item { }
+
 .stat-num {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.6rem;
@@ -484,6 +484,34 @@ footer a:hover { color: #fff; }
   text-transform: uppercase;
   color: var(--text-sub);
   margin-top: 6px;
+}
+.open-data-tag-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(13,27,42,0.14);
+  position: relative;
+}
+
+.open-data-tag-img img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.open-data-tag-img:hover img { transform: scale(1.03); }
+
+.open-data-tag-img figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px;
+  background: linear-gradient(to top, rgba(13,27,42,0.65), transparent);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  /* text-transform: uppercase; */
 }
 
 /* --- Keyframes --- */
