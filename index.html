@@ -13,8 +13,20 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <style>
     /* Page-specific overrides */
-    ul.nav-links li { list-style: none !important; padding: 0 !important; margin: 0 !important; }
-    ul.nav-links { list-style: none !important; padding: 0 !important; margin: 0 !important; display: flex !important; gap: 36px !important; }
+    ul.nav-links li { list-style: none !important; 
+      padding: 0 !important; 
+      margin: 0 !important; }
+
+    ul.nav-links { list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex !important;
+      gap: 36px !important;
+    }
+    @media (max-width: 768px) {
+      ul.nav-links { gap: 0px !important; }
+    }
+
     ul.nav-links li { display: flex !important; align-items: center !important; }
     .nav-links a { font-size: 19px !important; color: rgba(255,255,255,0.92) !important; display: inline-block !important; position: relative !important; }
     .nav-links a.active::after { width: 100% !important; background: var(--ocean-lt) !important; }
@@ -22,6 +34,9 @@
     .nav-links a.active { color: var(--ocean-lt) !important; }
     nav.scrolled .nav-links a { color: var(--navy-mid) !important; }
     .hero-img { object-position: center 50%; filter: brightness(0.97) saturate(1.05) !important; }
+    @media (max-width: 768px) {
+      .hero-img { object-position: 72% 50% !important; }
+    }
 
 
 
@@ -160,6 +175,11 @@
   <a href="index.html" class="nav-logo-wrap">
     <img src="uploads/Logo/gis_for_wildlife_new_logo_web-removebg-preview.png" alt="GIS for Wildlife" class="nav-logo">
   </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <ul class="nav-links nav-links-center" style="padding: 0; text-align: left; justify-content: flex-start; margin: 0">
     <li><a href="index.html" class="active" style="font-family: Ovo, Georgia, serif;">Home</a></li>
     <li><a href="data.html" style="font-family: Ovo, Georgia, serif; padding: 0px 0px 4px">Data</a></li>
@@ -398,7 +418,33 @@
   revealEls.forEach(el => observer.observe(el));
 </script>
 
-
+<script>
+  /* --- Mobile hamburger --- */
+  (function () {
+    var hamburger = document.getElementById('nav-hamburger');
+    var nav       = document.getElementById('main-nav');
+    if (!hamburger || !nav) return;
+    hamburger.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('nav-open');
+      hamburger.classList.toggle('is-open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.nav-links-center a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('nav-open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('nav-open') && !nav.contains(e.target)) {
+        nav.classList.remove('nav-open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
 
 <!-- Tweaks panel removed from this page -->

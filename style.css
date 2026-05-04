@@ -526,7 +526,6 @@ footer a:hover { color: #fff; }
 
 /* --- Responsive --- */
 @media (max-width: 860px) {
-  nav { padding: 0 24px; }
   section, .split-section { padding: 64px 24px; }
   .split-inner { grid-template-columns: 1fr; gap: 40px; }
   .split-inner.reverse { direction: ltr; }
@@ -534,4 +533,133 @@ footer a:hover { color: #fff; }
   .stat-row { gap: 36px; }
   .img-section-caption { padding: 32px 24px; }
   footer { padding: 36px 24px; }
+}
+
+/* --- Hamburger button (hidden on desktop) --- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.28s ease, width 0.28s ease;
+  transform-origin: center;
+}
+nav.scrolled .nav-hamburger span { background: var(--navy-mid); }
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Mobile: 768px --- */
+@media (max-width: 768px) {
+  :root { --nav-h: 60px; }
+
+  nav { padding: 0 16px; height: 60px; }
+
+  .nav-logo-wrap { padding-left: 0; align-items: center; position: relative; z-index: 100; }
+
+  .nav-logo { height: 100px !important; 
+              margin-top: -5px !important; 
+              margin-right: 15px !important; 
+            }
+
+  .nav-hamburger { display: flex; 
+                margin-right: 15px !important; 
+                margin-top: 15px !important; }
+  .nav-spacer { display: none; }
+
+  .nav-links-center {
+    position: fixed !important;
+    top: 60px !important;
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    z-index: 99;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    background: rgba(255,255,255,0.40);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(13,27,42,0.08);
+    box-shadow: 0 4px 20px rgba(13,27,42,0.08);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+  nav.nav-open .nav-links-center {
+    max-height: 110px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links-center li {
+    display: block !important;
+    width: 100%;
+    border-bottom: 1px solid rgba(13,27,42,0.08);
+    transition: background 0.18s;
+  }
+  .nav-links-center li:last-child { border-bottom: none; }
+  .nav-links-center li:hover { background: rgba(13,27,42,0.06); }
+  .nav-links-center li a {
+    display: block !important;
+    width: 100% !important;
+    padding: 11px 20px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    color: var(--navy-mid) !important;
+    font-family: 'Ovo', Georgia, serif !important;
+    letter-spacing: 0.04em;
+    background: transparent !important;
+  }
+  .nav-links-center li a.active { color: var(--ocean) !important; }
+  .nav-links-center li a:hover { color: var(--navy) !important; }
+  .nav-links-center li a::after { display: none !important; }
+
+  section, .split-section { padding: 48px 20px; }
+  .band-section { padding: 56px 20px; }
+
+  .img-section { height: 100vh; min-height: 0; }
+
+  .split-image {
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .hero { height: 85vh; min-height: 420px; }
+  .hero-img { transform: none !important; }
+  .img-section img { transform: none !important; }
+  .hero-caption { bottom: 32px; padding: 0 20px; }
+
+  .stat-row { gap: 24px; }
+
+  footer { padding: 28px 20px 36px !important; }
+
+  .closing-section { height: 55vh !important; min-height: 300px !important; }
+  .partners { padding: 24px 16px !important; gap: 8px !important; }
+
+  .open-data, .seasonal-intro, .season-grid-section, .capability-band {
+    padding: 48px 20px !important;
+  }
 }
