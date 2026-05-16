@@ -617,7 +617,7 @@ nav.scrolled .nav-hamburger span { background: var(--navy-mid); }
     padding: 0 !important;
   }
   nav.nav-open .nav-links-center {
-    max-height: 110px;
+    max-height: 600px;
     opacity: 1;
     pointer-events: auto;
   }

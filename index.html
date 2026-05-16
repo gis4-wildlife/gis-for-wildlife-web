@@ -31,6 +31,10 @@
     .nav-links a:hover::after { width: 100% !important; background: var(--ocean-lt) !important; }
     .nav-links a.active { color: var(--ocean-lt) !important; }
     .b2b-hero-img { object-position: center 40%; filter: brightness(1) saturate(1.05) !important; }
+    @media (max-width: 768px) {
+      .b2b-hero-img { object-position: 30% 40% !important; }
+      .sealion-img { object-position: 55% center !important; }
+    }
     #hero .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 10%, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%); }
 
     /* Feature strip */
@@ -180,7 +184,7 @@
      FULL-BLEED IMAGE
 ═══════════════════════════════════════ -->
 <div class="img-section" id="parallax-b2b">
-  <img src="uploads/Home_page/GAB3504.jpg" alt="Scuba diving wildlife experience" id="parallax-b2b-img">
+  <img src="uploads/Home_page/GAB3504.jpg" alt="Scuba diving wildlife experience" id="parallax-b2b-img" class="sealion-img">
   <div class="img-section-caption reveal">
     <h2>Client booking with confidence</h2>
     <p>Online reservations and multi-currency payments</p>

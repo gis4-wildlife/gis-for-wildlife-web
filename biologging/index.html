@@ -36,7 +36,8 @@
       gap: 36px !important;
     }
     @media (max-width: 768px) {
-      ul.nav-links { gap: 0px !important; }
+      ul.nav-links { gap: 0px !important; flex-direction: column !important; }
+      ul.nav-links li { display: block !important; width: 100% !important; }
     }
 
     ul.nav-links li { display: flex !important; align-items: center !important; }
@@ -47,7 +48,7 @@
     nav.scrolled .nav-links a { color: var(--navy-mid) !important; }
     .hero-img { object-position: center 50%; filter: brightness(0.97) saturate(1.05) !important; }
     @media (max-width: 768px) {
-      .hero-img { object-position: 72% 50% !important; }
+      .hero-img { object-position: 76% 50% !important; }
     }
 
 
@@ -179,6 +180,10 @@
       .wt-showcase-card { order: -1; border-radius: 12px 12px 0 0 !important; }
       .wt-showcase-img { order: 1; }
       .wt-showcase-img img { border-radius: 0 0 12px 12px !important; }
+      .copernicus-logo { height: 32px !important; max-width: 80px !important; 
+        left: 120px !important; 
+      top:0px !important}
+      .wt-credit { left: 110px !important; bottom: 22px !important; font-size: 0.5rem !important; }
     }
   </style>
 <script type="text/javascript" data-name="TokenSigning" data-by="Web-eID extension" src="chrome-extension://ncibgoaomkmdpilpocfeponihegamlic/token-signing-page-script.js"></script></head>
@@ -322,8 +327,8 @@
           alt="Wildlife Tracker GEO platform screenshot"
           style="width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 12px 0 0 12px; box-shadow: 0 24px 64px rgba(13,27,42,0.18);"
         />
-        <span style="position: absolute; bottom: 44px; left: 220px; font-family: 'Lato', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(0,0,0,0.6); text-shadow: 0 1px 4px rgba(255,255,255,0.8); pointer-events: none;">Galápagos Whale Shark Project ®</span>
-        <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" style="position: absolute; top: 10px; left: 220px; height: 38px; width: auto; max-width: 130px; object-fit: contain; opacity: 0.8; pointer-events: none; background: rgba(255,255,255,0.55); border-radius: 6px; padding: 4px 8px; backdrop-filter: blur(6px); box-shadow: 0 2px 12px rgba(255,255,255,0.25);" />
+        <span class="wt-credit" style="position: absolute; bottom: 44px; left: 220px; font-family: 'Lato', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(0,0,0,0.6); text-shadow: 0 1px 4px rgba(255,255,255,0.8); pointer-events: none;">Galápagos Whale Shark Project ®</span>
+        <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" class="copernicus-logo" style="position: absolute; top: 10px; left: 220px; height: 38px; width: auto; max-width: 130px; object-fit: contain; opacity: 0.8; pointer-events: none; background: rgba(255,255,255,0.55); border-radius: 6px; padding: 4px 8px; backdrop-filter: blur(6px); box-shadow: 0 2px 12px rgba(255,255,255,0.25);" />
       </div>
       <!-- Card — right, flush -->
       <div class="wt-showcase-card reveal reveal-delay-1" style="background: var(--navy); border-radius: 0 12px 12px 0; box-shadow: 0 20px 60px rgba(13,27,42,0.12); padding: 32px 38px; position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
