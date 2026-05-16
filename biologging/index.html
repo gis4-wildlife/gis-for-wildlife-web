@@ -1,0 +1,678 @@
+<!DOCTYPE html><html lang="en" style="--photo-font: 'Cormorant Garamond';"><head>
+
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../uploads/Logo/ocean-web-removebg-alt.png" />
+  <title>GIS for Wildlife Movement Analytics</title>
+  <meta name="description" content="Biologging and Earth Observation technology for ocean conservation. Wildlife Tracker GEO — satellite tracking meets marine science.">
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gis4-wildlife.com/" />
+  <meta property="og:title" content="GIS for Wildlife Movement Analytics" />
+  <meta property="og:description" content="Biologging and Earth Observation technology for ocean conservation. Wildlife Tracker GEO — satellite tracking meets marine science." />
+  <meta property="og:image" content="https://gis4-wildlife.com/uploads/Conservation_page/arturo-rivera-0ANjak7w4IQ-unsplash-cut.jpg" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GIS for Wildlife Movement Analytics" />
+  <meta name="twitter:description" content="Biologging and Earth Observation technology for ocean conservation. Wildlife Tracker GEO — satellite tracking meets marine science." />
+  <meta name="twitter:image" content="https://gis4-wildlife.com/uploads/Conservation_page/arturo-rivera-0ANjak7w4IQ-unsplash-cut.jpg" />
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    /* Page-specific overrides */
+    ul.nav-links li { list-style: none !important; 
+      padding: 0 !important; 
+      margin: 0 !important; }
+
+    ul.nav-links { list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex !important;
+      gap: 36px !important;
+    }
+    @media (max-width: 768px) {
+      ul.nav-links { gap: 0px !important; }
+    }
+
+    ul.nav-links li { display: flex !important; align-items: center !important; }
+    .nav-links a { font-size: 19px !important; color: rgba(255,255,255,0.92) !important; display: inline-block !important; position: relative !important; }
+    .nav-links a.active::after { width: 100% !important; background: var(--ocean-lt) !important; }
+    .nav-links a:hover::after { width: 100% !important; background: var(--ocean-lt) !important; }
+    .nav-links a.active { color: var(--ocean-lt) !important; }
+    nav.scrolled .nav-links a { color: var(--navy-mid) !important; }
+    .hero-img { object-position: center 50%; filter: brightness(0.97) saturate(1.05) !important; }
+    @media (max-width: 768px) {
+      .hero-img { object-position: 72% 50% !important; }
+    }
+
+
+
+    /* Partners strip */
+    .partners {
+      background: var(--off-white);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .partners-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-right: 8px;
+    }
+    .partner-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      padding: 8px 20px;
+      border: 1.5px solid rgba(13,27,42,0.14);
+      border-radius: 30px;
+      background: #fff;
+    }
+
+    /* Product feature strip */
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--off-white);
+    }
+    .feature-item {
+      background: #fff;
+      padding: 52px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.25s;
+    }
+    .feature-item:hover { background: oklch(97% 0.02 215); }
+    .feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: oklch(94% 0.05 210);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-icon svg { width: 22px; height: 22px; stroke: var(--ocean); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .feature-desc {
+      font-size: 0.92rem;
+      line-height: 1.72;
+      color: var(--text-sub);
+      font-weight: 300;
+    }
+
+    /* Rays closing section */
+    .closing-section {
+      position: relative;
+      height: 85vh;
+      min-height: 540px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .closing-section img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      filter: brightness(0.95) saturate(1.1);
+    }
+    .closing-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,27,42,0.05) 0%, rgba(13,27,42,0.45) 100%);
+    }
+    .closing-content {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px 48px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+    .closing-content p {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(0.85rem, 1.3vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0.9;
+      max-width: 480px;
+      margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    }
+    .closing-content h2 {
+      font-family: var(--photo-font, 'Ovo'), Georgia, serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.22;
+      margin-bottom: 32px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+
+    @media (max-width: 860px) {
+      .feature-strip { grid-template-columns: 1fr; }
+      .partners { padding: 32px 24px; }
+    }
+    @media (max-width: 768px) {
+      .wt-showcase-row { grid-template-columns: 1fr !important; }
+      .wt-showcase-card { order: -1; border-radius: 12px 12px 0 0 !important; }
+      .wt-showcase-img { order: 1; }
+      .wt-showcase-img img { border-radius: 0 0 12px 12px !important; }
+    }
+  </style>
+<script type="text/javascript" data-name="TokenSigning" data-by="Web-eID extension" src="chrome-extension://ncibgoaomkmdpilpocfeponihegamlic/token-signing-page-script.js"></script></head>
+<body data-new-gr-c-s-check-loaded="14.1286.0" data-gr-ext-installed="" style="font-family: &quot;Trebuchet MS&quot;;">
+
+
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="../" class="nav-logo-wrap">
+    <img src="../uploads/Logo/gis_for_wildlife_new_logo_web-removebg-preview.png" alt="GIS for Wildlife" class="nav-logo">
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links nav-links-center" style="padding: 0; text-align: left; justify-content: flex-start; margin: 0">
+    <li><a href="../" style="font-family: Ovo, Georgia, serif; padding: 0px 0px 4px">Home</a></li>
+    <li><a href="./" class="active" style="font-family: Ovo, Georgia, serif;">Biologging</a></li>
+    <li><a href="../data/" style="font-family: Ovo, Georgia, serif; padding: 0px 0px 4px">Data</a></li>
+    <li><a href="../contact/" style="font-family: Ovo, Georgia, serif; padding: 0px 0px 4px">Contact</a></li>
+  </ul>
+  <div class="nav-spacer"></div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <img src="../uploads/Conservation_page/kris-mikael-krister-aGihPIbrtVE-unsplash.jpg" alt="Baby sea turtle in a bowl on the beach at sunset" class="hero-img" id="hero-img" style="transform: scale(1.08) translateY(9.21057px);">
+  <div class="hero-overlay"></div>
+  <div class="hero-caption hero-caption-lower">
+    <h1>Biologging and Earth Observation</h1>
+    <p>Wildlife monitoring in changing oceanic ecosystems</p>
+  </div>
+</section>
+
+
+
+
+
+<!-- ═══════════════════════════════════════
+     INTRO TEXT SECTION
+═══════════════════════════════════════ -->
+<section class="text-section">
+  <div class="section-inner">
+    <div class="reveal visible">
+      <p class="section-label">Our Mission</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Geospatial science<br>in service of the ocean</h2>
+    </div>
+    <div class="reveal reveal-delay-1 visible">
+      <p class="section-body" style="text-align: justify;">
+        GIS for Wildlife develops software that integrates satellite biologging data with real-time
+        Earth Observation layers — sea surface temperature, chlorophyll concentration —
+        to reveal how marine species navigate a dynamic and increasingly threatened ocean environment.
+      </p>
+    </div>
+    <div class="reveal reveal-delay-2 visible">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">SST</div>
+          <div class="stat-label">Sea Surface Temperature</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Chl</div>
+          <div class="stat-label">Phytoplankton Concentration</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">GPS</div>
+          <div class="stat-label">Satellite Biologging Tags</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SEALS — FULL BLEED IMAGE
+═══════════════════════════════════════ -->
+<div class="img-section" id="parallax-seals">
+  <img src="../uploads/Conservation_page/neil-cooper-uwI8R_FyLrI-unsplash.jpg" alt="Harbour seals resting on coastal rocks" id="parallax-seals-img">
+  <div class="img-section-caption reveal">
+    <h2>From polar coasts to tropical reefs</h2>
+    <p>Marine fauna movement monitoring across diverse habitats</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     FEATURE STRIP
+═══════════════════════════════════════ -->
+<div class="feature-strip">
+  <div class="feature-item reveal">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    </div>
+    <div class="feature-title">Biologging</div>
+    <div class="feature-desc">Satellite tags relay real-time GPS positions via satellite for any tagged marine individual, anywhere on Earth.</div>
+  </div>
+  <div class="feature-item reveal reveal-delay-1">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path></svg>
+    </div>
+    <div class="feature-title">Earth Observation Layers</div>
+    <div class="feature-desc">Copernicus Marine Service data streams SST and Chlorophyll overlaying directly on tracking trajectories.</div>
+  </div>
+  <div class="feature-item reveal reveal-delay-2">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M17.5 14v3M14 17.5h7"></path></svg>
+    </div>
+    <div class="feature-title">Movebank Database</div>
+    <div class="feature-desc">Integrated with Movebank, the world's largest repository of animal tracking data for migratory species studies.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     WILDLIFE TRACKER GEO — SHOWCASE
+═══════════════════════════════════════ -->
+<section style="background: var(--white); padding: 96px 48px; overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <!-- Title row -->
+    <div class="reveal" style="margin-bottom: 48px;">
+      <p class="section-label">Wildlife Tracker GEO</p>
+      <div class="divider" style="margin: 0 auto 28px;"></div>
+      <h2 class="section-title" style="font-size: 2rem;">Geospatial platform for wildlife monitoring</h2>
+      <p class="section-body" style="margin-top: 20px; margin-left: auto; margin-right: auto;">Designed for research, conservation, and MPA management.</p>
+    </div>
+    <!-- Image + card row -->
+    <div class="wt-showcase-row" style="display: grid; grid-template-columns: 65% 0.7fr; align-items: stretch; justify-content: center;">
+      <!-- Image — left, large -->
+      <div class="wt-showcase-img reveal" style="position: relative; z-index: 1;">
+        <img
+          src="../uploads/Conservation_page/wildlife-tracker-geo.png"
+          alt="Wildlife Tracker GEO platform screenshot"
+          style="width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 12px 0 0 12px; box-shadow: 0 24px 64px rgba(13,27,42,0.18);"
+        />
+        <span style="position: absolute; bottom: 44px; left: 220px; font-family: 'Lato', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(0,0,0,0.6); text-shadow: 0 1px 4px rgba(255,255,255,0.8); pointer-events: none;">Galápagos Whale Shark Project ®</span>
+        <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" style="position: absolute; top: 10px; left: 220px; height: 38px; width: auto; max-width: 130px; object-fit: contain; opacity: 0.8; pointer-events: none; background: rgba(255,255,255,0.55); border-radius: 6px; padding: 4px 8px; backdrop-filter: blur(6px); box-shadow: 0 2px 12px rgba(255,255,255,0.25);" />
+      </div>
+      <!-- Card — right, flush -->
+      <div class="wt-showcase-card reveal reveal-delay-1" style="background: var(--navy); border-radius: 0 12px 12px 0; box-shadow: 0 20px 60px rgba(13,27,42,0.12); padding: 32px 38px; position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+        <p class="section-body" style="max-width: 100% !important; font-size: 0.85rem !important; color: rgba(255,255,255,0.82); margin: 0; text-align: justify; font-weight: 200;">
+          <strong style="color: #fff; font-weight: 600;">Wildlife Tracker GEO</strong> is our dedicated geospatial platform for wildlife monitoring and
+          Marine Protected Area management. It overlays biologging trajectories with real time
+          eco geographical data sourced from the <strong style="color: #fff; font-weight: 600;">Copernicus Marine Service</strong>, such as SST
+          and Phytoplankton, to reveal how marine species navigate
+          in a dynamic and changing ocean.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     WHALE SHARK — WILDLIFE TRACKER GEO BAND
+═══════════════════════════════════════ -->
+<section class="band-section" id="tracking-giants">
+  <div class="section-inner" style="text-align:center;">
+    <div class="reveal">
+      <p class="section-label" style="color: var(--ocean-lt);">Galápagos Use Case</p>
+      <div class="divider" style="margin: 0 auto 28px;"></div>
+      <h2 class="section-title">Tracking the giants of the Galápagos</h2>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <p class="section-body" style="text-align: center;">
+        In collaboration with the <strong style="color:#fff;">Galápagos Whale Shark Project</strong>,
+        Wildlife Tracker GEO was deployed to analyse the movement of satellite-tagged whale sharks
+        across the Eastern Tropical Pacific, combining biologging data with ocean environmental layers.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     WHALE SHARK — FULL BLEED + BUTTON
+═══════════════════════════════════════ -->
+<div class="img-section" id="parallax-shark">
+  <img src="../uploads/Conservation_page/SofiaGreen_7858_SPOT_Tag_LR.jpg" alt="Whale shark with satellite SPOT tag, Galápagos" id="parallax-shark-img">
+  <div class="img-section-caption reveal">
+    <span class="chip chip-ocean" style="margin-bottom:14px; display:inline-block;">Wildlife Tracker GEO</span>
+    <h2>Whale shark #Sky — Galápagos Marine Reserve</h2>
+    <p>Satellite tag data merged with SST and Chlorophyll layers reveals how these giants respond to seasonal ocean shifts.</p>
+    <a href="../data/" class="btn btn-white" style="margin-top: 24px;">Explore the Data</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     GREEN TURTLE — CONSERVATION SCIENCE
+═══════════════════════════════════════ -->
+<section class="split-section">
+  <div class="split-inner">
+    <div class="split-image reveal">
+      <img src="../uploads/Conservation_page/arturo-rivera-0ANjak7w4IQ-unsplash-cut.jpg" alt="Baby sea turtle in a bowl on the beach at sunset">
+    </div>
+    <div>
+      <div class="reveal">
+        <p class="section-label">Biologging</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Wildlife migration in a changing ocean</h2>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="section-body" style="text-align: justify;">
+          Species like sea turtles and whale sharks navigate across ocean basins using environmental
+          cues such as temperature gradients, productivity hotspots, and current systems. Our geospatial platform
+          makes those invisible connections visible to scientists and conservationists.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     ADAPTABLE WORLDWIDE — SPLIT (reversed)
+═══════════════════════════════════════ -->
+<section class="split-section">
+  <div class="split-inner reverse">
+    <div class="split-image reveal">
+      <img src="../uploads/Conservation_page/cornelius-ventures-portrait.jpg" alt="Gentoo penguin in Antarctica">
+    </div>
+    <div>
+      <div class="reveal">
+        <p class="section-label">Global Reach</p>
+        <div class="divider"></div>
+        <h2 class="section-title">Adaptable to any species, any ocean</h2>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="section-body" style="text-align: justify;">
+          From Antarctic penguins to tropical elasmobranchs, Wildlife Tracker GEO integrates with
+          Movebank's global database and Copernicus Marine Service to deliver species-agnostic
+          movement analytics for researchers worldwide.
+        </p>
+      <!-- </div>
+      <div class="reveal reveal-delay-2" style="margin-top: 32px;">
+        <a href="data/" class="btn btn-outline-navy">See Open Data</a>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<div id="shared-footer"></div>
+<script src="../js/footer.js"></script>
+
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+  /* --- Nav scroll state --- */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* --- Parallax on hero and full-bleed images --- */
+  function setupParallax(imgId, factor) {
+    const img = document.getElementById(imgId);
+    if (!img) return;
+    window.addEventListener('scroll', () => {
+      const rect = img.closest('section, div').getBoundingClientRect();
+      const visible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (visible) {
+        const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        img.style.transform = `scale(1.08) translateY(${(pct - 0.5) * factor}px)`;
+      }
+    }, { passive: true });
+  }
+  setupParallax('hero-img', 60);
+  setupParallax('parallax-seals-img', 50);
+  setupParallax('parallax-shark-img', 50);
+
+  /* --- Scroll reveal --- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+<script>
+  /* --- Mobile hamburger --- */
+  (function () {
+    var hamburger = document.getElementById('nav-hamburger');
+    var nav       = document.getElementById('main-nav');
+    if (!hamburger || !nav) return;
+    hamburger.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('nav-open');
+      hamburger.classList.toggle('is-open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.nav-links-center a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('nav-open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('nav-open') && !nav.contains(e.target)) {
+        nav.classList.remove('nav-open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+
+<!-- Tweaks panel removed from this page -->
+<!-- Old tweaks div below:
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+</style><div class="twk-panel" data-noncommentable="" style="right: 16px; bottom: 16px;"><div class="twk-hd"><b>Tweaks</b><button class="twk-x" aria-label="Close tweaks" data-om-text-attrs="{&quot;aria-label&quot;:&quot;txt:/https:/019def51-a0aa-7322-8a1d-8fcb143b3afe.claudeusercontent.com/v1/design/projects/019def51-a0aa-7322-8a1d-8fcb143b3afe/serve/tweaks-panel.jsx:11606:11620&quot;}"><span data-om-text="txt:/https:/019def51-a0aa-7322-8a1d-8fcb143b3afe.claudeusercontent.com/v1/design/projects/019def51-a0aa-7322-8a1d-8fcb143b3afe/serve/tweaks-panel.jsx:11716:11717" class="__om-t">✕</span></button></div><div class="twk-body"><div class="twk-sect">Logo</div><div class="twk-row"><div class="twk-lbl"><span>Logo size</span><span class="twk-val">94</span></div><input type="range" class="twk-slider" min="50" max="120" step="2" value="94"></div><div class="twk-sect">Photo caption font</div><div class="twk-row"><div class="twk-lbl"><span>Font style</span></div><select class="twk-field"><option value="Ovo">Ovo — soft serif</option><option value="Cormorant Garamond">Cormorant Garamond — elegant</option><option value="Playfair Display">Playfair Display — classic</option></select></div><div class="twk-sect">Nav menu font</div><div class="twk-row"><div class="twk-lbl"><span>Font style</span></div><select class="twk-field"><option value="Playfair Display">Playfair Display</option><option value="Ovo">Ovo</option><option value="Cormorant Garamond">Cormorant Garamond</option><option value="Lato">Lato (sans-serif)</option></select></div></div></div></div>
+<script type="text/babel" data-plugins="transform-react-jsx-source,om-src-id,om-text-extract" data-filename="inline-1">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "logoSize": 90,
+  "photoFont": "Ovo",
+  "navFont": "Playfair Display"
+}/*EDITMODE-END*/; -->
+<!-- 
+function TweaksApp() {
+  const [tweaks, setTweakState] = React.useState(TWEAK_DEFAULTS);
+
+  function setTweak(key, value) {
+    setTweakState(prev => {
+      const next = { ...prev, [key]: value };
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: value } }, '*');
+      return next;
+    });
+  }
+
+  React.useEffect(() => {
+    document.querySelectorAll('.nav-logo').forEach(el => {
+      el.style.height = tweaks.logoSize + 'px';
+    });
+    document.documentElement.style.setProperty('--photo-font', "'" + tweaks.photoFont + "'");
+    document.querySelectorAll('.nav-links a').forEach(el => {
+      el.style.fontFamily = "'" + tweaks.navFont + "', Georgia, serif";
+    });
+  }, [tweaks]);
+
+  // Listen for host activate/deactivate
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setVisible(true);
+      if (e.data?.type === '__deactivate_edit_mode') setVisible(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <TweaksPanel title="Tweaks" onClose={() => {
+      setVisible(false);
+      window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+    }}>
+      <TweakSection label="Logo">
+        <TweakSlider label="Logo size" id="logoSize" min={50} max={120} step={2} value={tweaks.logoSize} onChange={v => setTweak('logoSize', v)} />
+      </TweakSection>
+      <TweakSection label="Photo caption font">
+        <TweakSelect
+          label="Font style"
+          id="photoFont"
+          value={tweaks.photoFont}
+          options={[
+            { value: 'Ovo', label: 'Ovo — soft serif' },
+            { value: 'Cormorant Garamond', label: 'Cormorant Garamond — elegant' },
+            { value: 'Playfair Display', label: 'Playfair Display — classic' },
+          ]}
+          onChange={v => setTweak('photoFont', v)}
+        />
+      </TweakSection>
+      <TweakSection label="Nav menu font">
+        <TweakSelect
+          label="Font style"
+          id="navFont"
+          value={tweaks.navFont}
+          options={[
+            { value: 'Playfair Display', label: 'Playfair Display' },
+            { value: 'Ovo', label: 'Ovo' },
+            { value: 'Cormorant Garamond', label: 'Cormorant Garamond' },
+            { value: 'Lato', label: 'Lato (sans-serif)' },
+          ]}
+          onChange={v => setTweak('navFont', v)}
+        />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+// Tweaks rendered by compiled script above
+</script>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html> -->

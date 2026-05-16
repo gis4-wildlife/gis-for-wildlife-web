@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../uploads/Logo/ocean-web-removebg-alt.png" />
   <title>Data — GIS for Wildlife</title>
   <meta name="description" content="Open-source whale shark tracking data from the Galápagos Marine Reserve. Wildlife Tracker GEO — biologging meets Earth Observation." />
   <!-- Open Graph / social sharing -->
@@ -78,6 +79,7 @@
       color: rgba(255,255,255,0.7);
       max-width: 680px;
       margin-bottom: 0;
+      text-align: justify;
     }
 
     /* Season grid section */
@@ -120,6 +122,19 @@
       background: #fff;
       box-shadow: 0 8px 32px rgba(13,27,42,0.10);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .eo-card-credit {
+      position: absolute;
+      bottom: 88px;
+      left: 12px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(0, 0, 0, 0.55);
+      text-shadow: 0 1px 6px rgba(255, 255, 255, 0.4);
+      pointer-events: none;
     }
     .eo-card:hover {
       transform: translateY(-4px);
@@ -131,7 +146,16 @@
     }
     .eo-card-body {
       padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
+    .eo-card-body-text { flex: 1; }
+    .eo-card-logo { 
+                  height: auto; 
+                  max-width: 100px; 
+                  object-fit: contain; opacity: 0.75; flex-shrink: 0; }
     .eo-card-type {
       font-size: 11px;
       font-weight: 700;
@@ -186,7 +210,9 @@
   </button>
   <ul class="nav-links nav-links-center">
     <li><a href="../">Home</a></li>
+    <li><a href="../biologging/">Biologging</a></li>
     <li><a href="./" class="active">Data</a></li>
+    <li><a href="../contact/">Contact</a></li>
   </ul>
   <div class="nav-spacer"></div>
 </nav>
@@ -224,7 +250,7 @@
         <h2 class="section-title">Tagged individuals in the Galápagos Marine Reserve</h2>
       </div>
       <div class="reveal reveal-delay-1">
-        <p class="section-body" style="margin-bottom: 28px;">
+        <p class="section-body" style="margin-bottom: 28px; text-align: justify;">
           The Galápagos Whale Shark Project has deployed SPOT satellite tags on whale shark
           individuals within the UNESCO World Heritage Galápagos Marine Reserve.
           These tags transmit GPS positions via satellite, building a detailed picture
@@ -232,7 +258,7 @@
         </p>
       </div>
       <div class="reveal reveal-delay-2">
-        <p class="section-body" style="margin-bottom: 36px;">
+        <p class="section-body" style="margin-bottom: 36px; text-align: justify;">
           Using <strong>Wildlife Tracker GEO</strong>, we have made the tracking data
           for one tagged individual fully open-source and available for researchers,
           educators, and conservationists.
@@ -272,7 +298,7 @@
       <h2 class="section-title">Seasonal movement in a changing ocean</h2>
     </div>
     <div class="reveal reveal-delay-1">
-      <p class="section-body">
+      <p class="section-body" style="text-align: justify;">
         One of the core capabilities of Wildlife Tracker GEO is the ability to overlay
         animal tracking trajectories on seasonal Earth Observation layers such as Sea Surface
         Temperature (SST) and Phytoplankton (chlorophyll) concentration sourced from
@@ -303,9 +329,13 @@
             src="../uploads/Data_page/Mar2022.gif"
             alt="Sea Surface Temperature — March 2022, Eastern Tropical Pacific"
           />
+          <span class="eo-card-credit">Galápagos Whale Shark Project ®</span>
           <div class="eo-card-body">
-            <div class="eo-card-type">Sea Surface Temperature</div>
-            <div class="eo-card-title">SST — March 2022</div>
+            <div class="eo-card-body-text">
+              <div class="eo-card-type">Sea Surface Temperature</div>
+              <div class="eo-card-title">SST — March 2022</div>
+            </div>
+            <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" class="eo-card-logo" />
           </div>
         </div>
         <div class="eo-card">
@@ -313,9 +343,13 @@
             src="../uploads/Data_page/Mar2022-chl.gif"
             alt="Phytoplankton Chlorophyll — March 2022, Eastern Tropical Pacific"
           />
+          <span class="eo-card-credit">Galápagos Whale Shark Project ®</span>
           <div class="eo-card-body">
-            <div class="eo-card-type">Phytoplankton Concentration</div>
-            <div class="eo-card-title">Chlorophyll — March 2022</div>
+            <div class="eo-card-body-text">
+              <div class="eo-card-type">Phytoplankton Concentration</div>
+              <div class="eo-card-title">Chlorophyll — March 2022</div>
+            </div>
+            <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" class="eo-card-logo" />
           </div>
         </div>
       </div>
@@ -334,9 +368,13 @@
             src="../uploads/Data_page/Nov2022.gif"
             alt="Sea Surface Temperature — November 2022, Eastern Tropical Pacific"
           />
+          <span class="eo-card-credit">Galápagos Whale Shark Project ®</span>
           <div class="eo-card-body">
-            <div class="eo-card-type">Sea Surface Temperature</div>
-            <div class="eo-card-title">SST — November 2022</div>
+            <div class="eo-card-body-text">
+              <div class="eo-card-type">Sea Surface Temperature</div>
+              <div class="eo-card-title">SST — November 2022</div>
+            </div>
+            <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" class="eo-card-logo" />
           </div>
         </div>
         <div class="eo-card">
@@ -344,9 +382,13 @@
             src="../uploads/Data_page/Nov2022-chl.gif"
             alt="Phytoplankton Chlorophyll — November 2022, Eastern Tropical Pacific"
           />
+          <span class="eo-card-credit">Galápagos Whale Shark Project ®</span>
           <div class="eo-card-body">
-            <div class="eo-card-type">Phytoplankton Concentration</div>
-            <div class="eo-card-title">Chlorophyll — November 2022</div>
+            <div class="eo-card-body-text">
+              <div class="eo-card-type">Phytoplankton Concentration</div>
+              <div class="eo-card-title">Chlorophyll — November 2022</div>
+            </div>
+            <img src="../uploads/Data_page/copernicus_blue_logo.png" alt="Copernicus Marine Service" class="eo-card-logo" />
           </div>
         </div>
       </div>
